@@ -109,7 +109,7 @@ export default function TopNav({
   return (
     <header
       className={cn(
-        'fixed top-0 right-0 h-20 bg-white/95 backdrop-blur-xs border-b border-[#E2E8F0] flex items-center justify-between px-4 sm:px-8 z-30 transition-all duration-300 left-0 shadow-2xs',
+        'fixed top-0 right-0 h-20 bg-[#F5F3FF] border-b border-[#DDD6FE] flex items-center justify-between px-4 sm:px-8 z-30 transition-all duration-300 left-0 shadow-2xs',
         sidebarCollapsed ? 'md:left-[76px]' : 'md:left-[280px]'
       )}
     >
@@ -124,7 +124,7 @@ export default function TopNav({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search domains, logs, templates…"
-              className="w-full pl-9 pr-9 py-2 text-sm bg-[#F8FAFC] border border-[#DDD6FE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7C3AED] text-[#172033]"
+              className="w-full pl-9 pr-9 py-2 text-sm bg-white border border-[#DDD6FE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7C3AED] text-[#172033]"
             />
             {searchQuery && (
               <button
@@ -150,10 +150,10 @@ export default function TopNav({
             {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={onToggleSidebar}
-              className="md:hidden p-2 rounded-lg text-[#64748B] hover:text-[#172033] hover:bg-[#F5F3FF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C3AED] cursor-pointer"
+              className="md:hidden p-2 rounded-lg text-[#475569] hover:text-[#7C3AED] hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C3AED] cursor-pointer"
               aria-label="Open sidebar menu"
             >
-              <Menu className="w-5 h-5 text-[#172033]" />
+              <Menu className="w-5 h-5" />
             </button>
 
             {/* Breadcrumb / Page Title */}
@@ -165,8 +165,8 @@ export default function TopNav({
               >
                 MailFlow
               </button>
-              <span className="text-slate-300 hidden sm:inline">/</span>
-              <span className="text-xs sm:text-sm font-bold text-[#172033] truncate bg-[#F5F3FF] text-[#7C3AED] px-2.5 py-1 rounded-md border border-[#DDD6FE]">
+              <span className="text-[#DDD6FE] hidden sm:inline">/</span>
+              <span className="text-xs sm:text-sm font-bold text-[#7C3AED] truncate bg-white px-2.5 py-1 rounded-md border border-[#DDD6FE] shadow-2xs">
                 {pageLabels[activePage]}
               </span>
             </div>
@@ -183,7 +183,7 @@ export default function TopNav({
             {/* Mobile Search Toggle Icon */}
             <button
               onClick={() => setMobileSearchOpen(true)}
-              className="md:hidden p-2 text-[#64748B] hover:text-[#7C3AED] hover:bg-[#F5F3FF] rounded-lg transition-colors cursor-pointer"
+              className="md:hidden p-2 text-[#475569] hover:text-[#7C3AED] hover:bg-white rounded-lg transition-colors cursor-pointer"
               aria-label="Open search input"
             >
               <Search className="w-4.5 h-4.5" />
@@ -191,13 +191,13 @@ export default function TopNav({
 
             {/* Desktop Search Input with Shortcut Hint */}
             <div className="relative hidden md:flex items-center">
-              <Search className="absolute left-3 w-4 h-4 text-[#64748B]" />
+              <Search className="absolute left-3 w-4 h-4 text-[#7C3AED]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search resources…"
-                className="pl-9 pr-14 py-1.5 text-xs sm:text-sm bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg w-44 lg:w-64 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:bg-white transition-all text-[#172033] placeholder:text-slate-400"
+                className="pl-9 pr-14 py-2 text-xs sm:text-sm bg-white border border-[#DDD6FE] rounded-lg w-44 lg:w-64 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] transition-all text-[#172033] placeholder:text-slate-400 shadow-2xs"
               />
               {searchQuery ? (
                 <button
@@ -207,7 +207,7 @@ export default function TopNav({
                   <X className="w-3.5 h-3.5" />
                 </button>
               ) : (
-                <kbd className="absolute right-2.5 text-3xs bg-white border border-[#E2E8F0] text-[#64748B] px-1.5 py-0.5 rounded shadow-2xs font-mono pointer-events-none">
+                <kbd className="absolute right-2.5 text-3xs bg-[#F5F3FF] border border-[#DDD6FE] text-[#7C3AED] px-1.5 py-0.5 rounded shadow-2xs font-mono pointer-events-none font-bold">
                   /
                 </kbd>
               )}
@@ -216,7 +216,7 @@ export default function TopNav({
             {/* Public Landing Shortcut Link */}
             <button
               onClick={() => setCurrentView('landing')}
-              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#64748B] hover:text-[#7C3AED] hover:bg-[#F5F3FF] rounded-lg transition-colors cursor-pointer"
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#475569] hover:text-[#7C3AED] hover:bg-white rounded-lg transition-colors cursor-pointer"
               title="View Public Landing Page"
             >
               <Globe className="w-3.5 h-3.5 text-[#0891B2]" />
@@ -226,7 +226,7 @@ export default function TopNav({
             {/* Create New Solid Button */}
             <button
               onClick={onCreateNew}
-              className="flex items-center gap-1.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-sm font-semibold px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg transition-all shadow-2xs cursor-pointer active:scale-95"
+              className="flex items-center gap-1.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-sm font-semibold px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg transition-all shadow-sm shadow-violet-200 cursor-pointer active:scale-95"
               title="Create New Resource"
             >
               <Plus className="w-4 h-4 flex-shrink-0" />
@@ -240,7 +240,7 @@ export default function TopNav({
                   setShowNotif(!showNotif);
                   setShowProfile(false);
                 }}
-                className="relative w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#F5F3FF] text-[#64748B] hover:text-[#7C3AED] transition-all cursor-pointer"
+                className="relative w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white text-[#475569] hover:text-[#7C3AED] transition-all cursor-pointer"
                 aria-label="View notifications"
               >
                 <Bell className="w-4.5 h-4.5" />
@@ -346,7 +346,7 @@ export default function TopNav({
                   setShowProfile(!showProfile);
                   setShowNotif(false);
                 }}
-                className="flex items-center gap-2 hover:bg-[#F5F3FF] rounded-lg p-1 sm:pl-1.5 sm:pr-2 sm:py-1.5 transition-all cursor-pointer"
+                className="flex items-center gap-2 hover:bg-white rounded-lg p-1 sm:pl-1.5 sm:pr-2 sm:py-1.5 transition-all cursor-pointer"
                 aria-label="Open user profile menu"
               >
                 <div className="w-8 h-8 rounded-full bg-[#7C3AED] flex items-center justify-center text-white text-xs font-bold flex-shrink-0 shadow-2xs">

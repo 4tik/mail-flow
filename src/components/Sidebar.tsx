@@ -104,15 +104,15 @@ export default function Sidebar({
       <aside
         role="navigation"
         aria-label="Sidebar Navigation"
-        className={`fixed top-0 left-0 h-full bg-white border-r border-[#E2E8F0] flex flex-col z-50 md:z-30 transition-all duration-300 shadow-xl md:shadow-none ${
+        className={`fixed top-0 left-0 h-full bg-[#F5F3FF] border-r border-[#DDD6FE] flex flex-col z-50 md:z-30 transition-all duration-300 shadow-xl md:shadow-none ${
           mobileOpen
             ? 'translate-x-0 w-[300px] max-w-[85vw]'
             : '-translate-x-full md:translate-x-0'
         } ${collapsed ? 'md:w-[76px]' : 'md:w-[280px]'}`}
       >
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full bg-[#F5F3FF]">
           {/* Logo Header - Height matched with TopNav */}
-          <div className="h-20 flex items-center justify-between px-5 border-b border-[#E2E8F0] flex-shrink-0 bg-white">
+          <div className="h-20 flex items-center justify-between px-5 border-b border-[#DDD6FE] flex-shrink-0 bg-[#F5F3FF]">
             <div className="flex items-center gap-3 overflow-hidden">
               <div className="w-8 h-8 rounded-lg bg-[#7C3AED] flex items-center justify-center flex-shrink-0 shadow-2xs">
                 <Mail className="w-4 h-4 text-white" />
@@ -154,20 +154,20 @@ export default function Sidebar({
                   {showGroupHeader && (
                     <button
                       onClick={() => toggleGroup(group)}
-                      className="flex items-center justify-between w-full px-3 py-1.5 text-2xs font-bold text-[#64748B] uppercase tracking-wider hover:text-[#7C3AED] transition-colors cursor-pointer rounded-md"
+                      className="flex items-center justify-between w-full px-3 py-1.5 text-2xs font-bold text-[#6D28D9] uppercase tracking-wider hover:text-[#5B21B6] transition-colors cursor-pointer rounded-md"
                     >
                       <span>{group}</span>
                       {isGroupCollapsed ? (
-                        <ChevronDown className="w-3 h-3 text-[#94A3B8]" />
+                        <ChevronDown className="w-3 h-3 text-[#7C3AED]" />
                       ) : (
-                        <ChevronUp className="w-3 h-3 text-[#94A3B8]" />
+                        <ChevronUp className="w-3 h-3 text-[#7C3AED]" />
                       )}
                     </button>
                   )}
 
                   {/* Divider in Collapsed Desktop View */}
                   {collapsed && !mobileOpen && groupIdx > 0 && (
-                    <div className="my-2 mx-2 border-t border-[#E2E8F0]" />
+                    <div className="my-2 mx-2 border-t border-[#DDD6FE]" />
                   )}
 
                   {/* Group Items */}
@@ -182,10 +182,10 @@ export default function Sidebar({
                           <div key={item.id} className="relative group">
                             <button
                               onClick={() => handleItemClick(item.id)}
-                              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
+                              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
                                 isActive
-                                  ? 'bg-[#7C3AED] text-white shadow-2xs'
-                                  : 'text-[#475569] hover:bg-[#F5F3FF] hover:text-[#6D28D9]'
+                                  ? 'bg-[#7C3AED] text-white shadow-sm shadow-violet-200 font-semibold'
+                                  : 'text-[#475569] hover:bg-white hover:text-[#6D28D9] hover:shadow-2xs'
                               }`}
                             >
                               <Icon
@@ -206,7 +206,7 @@ export default function Sidebar({
                                   className={`ml-auto text-2xs font-semibold px-1.5 py-0.5 rounded-full ${
                                     isActive
                                       ? 'bg-white/20 text-white'
-                                      : 'bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE]'
+                                      : 'bg-white text-[#7C3AED] border border-[#DDD6FE]'
                                   }`}
                                 >
                                   {item.badge}
@@ -244,11 +244,11 @@ export default function Sidebar({
           </nav>
 
           {/* Footer Info & Desktop Collapse Toggle */}
-          <div className="p-3 border-t border-[#E2E8F0] flex-shrink-0 bg-white space-y-2">
+          <div className="p-3 border-t border-[#DDD6FE] flex-shrink-0 bg-[#F5F3FF] space-y-2">
 
             {/* Mobile Drawer User Card */}
             {mobileOpen && user && (
-              <div className="p-2.5 rounded-lg bg-[#F5F3FF] border border-[#DDD6FE] flex items-center justify-between">
+              <div className="p-2.5 rounded-lg bg-white border border-[#DDD6FE] flex items-center justify-between shadow-2xs">
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-[#7C3AED] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                     {user.avatar || 'JD'}
@@ -274,7 +274,7 @@ export default function Sidebar({
             {/* Desktop Collapse Toggle */}
             <button
               onClick={onToggle}
-              className="w-full hidden md:flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm text-[#475569] hover:bg-[#F5F3FF] hover:text-[#7C3AED] transition-all cursor-pointer font-medium"
+              className="w-full hidden md:flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm text-[#475569] hover:bg-white hover:text-[#7C3AED] hover:shadow-2xs transition-all cursor-pointer font-medium"
               title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
             >
               {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
