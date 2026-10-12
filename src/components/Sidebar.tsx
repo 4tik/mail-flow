@@ -81,14 +81,14 @@ export default function Sidebar({
       {/* Mobile Backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-200"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-200 cursor-pointer"
           onClick={onCloseMobile}
           aria-hidden="true"
         />
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-full bg-white border-r border-gray-200 flex flex-col z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 h-full bg-white border-r border-[#E2E8F0] flex flex-col z-40 transition-all duration-300 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
         style={{
@@ -96,14 +96,14 @@ export default function Sidebar({
         }}
       >
         {/* Logo & Mobile Close */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-100 flex-shrink-0">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] flex-shrink-0">
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm shadow-indigo-100">
+            <div className="w-8 h-8 rounded-lg bg-button-gradient flex items-center justify-center flex-shrink-0 shadow-sm shadow-violet-200">
               <Mail className="w-4 h-4 text-white" />
             </div>
             {!collapsed && (
-              <span className="font-bold text-gray-900 text-lg whitespace-nowrap">
-                Mail<span className="text-indigo-600">Flow</span>
+              <span className="font-bold text-[#172033] text-lg whitespace-nowrap">
+                Mail<span className="text-[#7C3AED]">Flow</span>
               </span>
             )}
           </div>
@@ -112,7 +112,7 @@ export default function Sidebar({
           {mobileOpen && (
             <button
               onClick={onCloseMobile}
-              className="md:hidden p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+              className="md:hidden p-1.5 rounded-lg text-[#64748B] hover:text-[#172033] hover:bg-[#F5F3FF] transition-colors cursor-pointer"
               aria-label="Close sidebar"
             >
               <X className="w-5 h-5" />
@@ -130,7 +130,7 @@ export default function Sidebar({
                 {!collapsed && (
                   <button
                     onClick={() => toggleGroup(group)}
-                    className="flex items-center justify-between w-full px-3 py-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider hover:text-gray-600 transition-colors"
+                    className="flex items-center justify-between w-full px-3 py-1.5 text-xs font-semibold text-[#64748B] uppercase tracking-wider hover:text-[#7C3AED] transition-colors cursor-pointer"
                   >
                     <span>{group}</span>
                     {isGroupCollapsed ? (
@@ -150,17 +150,17 @@ export default function Sidebar({
                           key={item.id}
                           onClick={() => handleItemClick(item.id)}
                           title={collapsed ? item.label : undefined}
-                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group relative ${
+                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group relative cursor-pointer ${
                             isActive
-                              ? 'bg-indigo-50 text-indigo-700'
-                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                              ? 'bg-[#F5F3FF] text-[#7C3AED]'
+                              : 'text-[#64748B] hover:bg-[#F5F3FF]/60 hover:text-[#7C3AED]'
                           }`}
                         >
                           <Icon
                             className={`w-4.5 h-4.5 flex-shrink-0 ${
                               isActive
-                                ? 'text-indigo-600'
-                                : 'text-gray-500 group-hover:text-gray-700'
+                                ? 'text-[#7C3AED]'
+                                : 'text-[#64748B] group-hover:text-[#7C3AED]'
                             }`}
                             style={{ width: '18px', height: '18px' }}
                           />
@@ -168,15 +168,15 @@ export default function Sidebar({
                             <span className="flex-1 text-left whitespace-nowrap">{item.label}</span>
                           )}
                           {!collapsed && item.badge && (
-                            <span className="ml-auto bg-indigo-100 text-indigo-700 text-xs font-semibold px-1.5 py-0.5 rounded-full">
+                            <span className="ml-auto bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] text-2xs font-semibold px-1.5 py-0.5 rounded-full">
                               {item.badge}
                             </span>
                           )}
                           {collapsed && item.badge && (
-                            <span className="absolute top-1 right-1 w-2 h-2 bg-indigo-500 rounded-full" />
+                            <span className="absolute top-1 right-1 w-2 h-2 bg-[#7C3AED] rounded-full" />
                           )}
                           {isActive && (
-                            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-indigo-600 rounded-r" />
+                            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[#7C3AED] rounded-r" />
                           )}
                         </button>
                       );
@@ -189,10 +189,10 @@ export default function Sidebar({
         </nav>
 
         {/* Desktop Collapse toggle */}
-        <div className="p-3 border-t border-gray-100 flex-shrink-0 hidden md:block">
+        <div className="p-3 border-t border-[#E2E8F0] flex-shrink-0 hidden md:block">
           <button
             onClick={onToggle}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-all"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm text-[#64748B] hover:bg-[#F5F3FF] hover:text-[#7C3AED] transition-all cursor-pointer"
           >
             {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             {!collapsed && <span className="text-xs">Collapse</span>}

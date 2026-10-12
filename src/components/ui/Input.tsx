@@ -37,18 +37,18 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-gray-700 flex items-center justify-between"
+            className="text-sm font-medium text-[#172033] flex items-center justify-between"
           >
             <span>
               {label}
-              {required && <span className="text-red-500 ml-1">*</span>}
+              {required && <span className="text-[#DC2626] ml-1">*</span>}
             </span>
           </label>
         )}
 
         <div className="relative flex items-center">
           {leftIcon && (
-            <div className="absolute left-3.5 flex items-center pointer-events-none text-gray-400">
+            <div className="absolute left-3.5 flex items-center pointer-events-none text-[#64748B]">
               {leftIcon}
             </div>
           )}
@@ -62,14 +62,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             aria-invalid={Boolean(error)}
             aria-describedby={error ? errorId : helperText ? helperId : undefined}
             className={cn(
-              'w-full px-3.5 py-2.5 text-sm rounded-lg border transition-all placeholder:text-gray-400 bg-white text-gray-900',
+              'w-full px-3.5 py-2.5 text-sm rounded-lg border transition-all placeholder:text-slate-400 bg-white text-[#172033]',
               'focus:outline-none focus:ring-2 focus:ring-offset-1',
               error
-                ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20 text-red-900'
-                : 'border-gray-200 hover:border-gray-300 focus:border-indigo-600 focus:ring-indigo-500/20',
+                ? 'border-red-300 focus:border-[#DC2626] focus:ring-red-500/20 text-red-900'
+                : 'border-[#E2E8F0] hover:border-slate-300 focus:border-[#7C3AED] focus:ring-[#7C3AED]/20',
               leftIcon ? 'pl-10' : '',
               rightAction ? 'pr-11' : '',
-              disabled ? 'bg-gray-50 text-gray-400 cursor-not-allowed border-gray-200' : '',
+              disabled ? 'bg-slate-50 text-slate-400 cursor-not-allowed border-slate-200' : '',
               className
             )}
             {...props}
@@ -83,7 +83,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {error && (
-          <p id={errorId} className="text-xs text-red-600 font-medium mt-0.5 flex items-center gap-1" role="alert">
+          <p id={errorId} className="text-xs text-[#DC2626] font-medium mt-0.5 flex items-center gap-1" role="alert">
             <svg className="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
@@ -96,7 +96,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {!error && helperText && (
-          <p id={helperId} className="text-xs text-gray-500 mt-0.5">
+          <p id={helperId} className="text-xs text-[#64748B] mt-0.5">
             {helperText}
           </p>
         )}

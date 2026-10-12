@@ -37,7 +37,7 @@ export default function Login({ onNotify }: LoginProps) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email.trim()) {
-      errs.email = 'Email address is required.';
+      errs.email = 'Work email address is required.';
     } else if (!emailRegex.test(email.trim())) {
       errs.email = 'Please provide a valid email format (e.g. name@company.com).';
     }
@@ -122,54 +122,54 @@ export default function Login({ onNotify }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen bg-hero-gradient flex flex-col justify-between selection:bg-[#F5F3FF] selection:text-[#7C3AED]">
       {/* Top Bar */}
       <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
         <button
           onClick={() => setCurrentView('landing')}
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#172033] transition-colors group cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           <span>Back to Home</span>
         </button>
 
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+          <div className="w-8 h-8 rounded-lg bg-button-gradient flex items-center justify-center text-white shadow-sm shadow-violet-200">
             <Mail className="w-4 h-4" />
           </div>
-          <span className="font-bold text-gray-900 text-lg tracking-tight">
-            Mail<span className="text-indigo-600">Flow</span>
+          <span className="font-bold text-[#172033] text-lg tracking-tight">
+            Mail<span className="text-[#7C3AED]">Flow</span>
           </span>
         </div>
 
-        <div className="text-xs text-gray-500 hidden sm:flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Systems Operational</span>
+        <div className="text-xs text-[#64748B] hidden sm:flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+          <span>Relay Engines Operational</span>
         </div>
       </header>
 
       {/* Main Container */}
       <main className="flex-1 flex items-center justify-center px-4 py-8 sm:px-6">
         <div className="w-full max-w-[440px] space-y-6">
-          {/* Card */}
-          <div className="bg-white rounded-2xl border border-gray-200/90 shadow-xl shadow-slate-200/50 p-6 sm:p-8 transition-all">
+          {/* Clean White Card */}
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-xl shadow-slate-200/50 p-6 sm:p-8 transition-all">
             {/* Header info */}
             <div className="text-center space-y-1.5 mb-6">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+              <h1 className="text-2xl font-bold tracking-tight text-[#172033]">
                 {mode === 'login' ? 'Sign in to MailFlow' : 'Create your account'}
               </h1>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#64748B]">
                 {mode === 'login'
                   ? 'Access your email infrastructure, queues & campaigns'
-                  : 'Start sending high-deliverability emails in minutes'}
+                  : 'Start relaying high-deliverability emails in minutes'}
               </p>
             </div>
 
-            {/* Quick Demo Fill Helper Banner (When in login mode) */}
+            {/* Quick Demo Fill Helper Banner (When in login mode) with subtle cyan highlight */}
             {mode === 'login' && (
-              <div className="mb-5 p-3 rounded-xl bg-indigo-50/80 border border-indigo-100/90 flex items-center justify-between text-xs text-indigo-900">
+              <div className="mb-5 p-3 rounded-xl bg-[#F5F3FF] border border-[#DDD6FE] flex items-center justify-between text-xs text-[#172033]">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+                  <Sparkles className="w-4 h-4 text-[#7C3AED] flex-shrink-0" />
                   <span>
                     Testing? Use <strong>john@acme.com</strong>
                   </span>
@@ -177,7 +177,7 @@ export default function Login({ onNotify }: LoginProps) {
                 <button
                   type="button"
                   onClick={handlePrefillDemo}
-                  className="font-semibold text-indigo-600 hover:text-indigo-800 underline underline-offset-2 transition-colors cursor-pointer"
+                  className="font-semibold text-[#0891B2] hover:text-[#0E7490] underline underline-offset-2 transition-colors cursor-pointer"
                 >
                   Quick Fill
                 </button>
@@ -187,10 +187,10 @@ export default function Login({ onNotify }: LoginProps) {
             {/* Server Error Alert */}
             {serverError && (
               <div
-                className="mb-5 p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-2.5 animate-in fade-in duration-150"
+                className="mb-5 p-3.5 rounded-lg bg-red-50 border border-red-200 text-[#DC2626] text-sm flex items-start gap-2.5 animate-in fade-in duration-150"
                 role="alert"
               >
-                <div className="w-2 h-2 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-[#DC2626] mt-1.5 flex-shrink-0" />
                 <span className="flex-1 leading-snug">{serverError}</span>
               </div>
             )}
@@ -209,7 +209,7 @@ export default function Login({ onNotify }: LoginProps) {
                       if (errors.name) setErrors((prev) => ({ ...prev, name: '' }));
                     }}
                     error={errors.name}
-                    leftIcon={<UserIcon className="w-4 h-4" />}
+                    leftIcon={<UserIcon className="w-4 h-4 text-[#7C3AED]" />}
                     autoComplete="name"
                     disabled={isLoading}
                   />
@@ -219,7 +219,7 @@ export default function Login({ onNotify }: LoginProps) {
                     placeholder="Acme Global Inc."
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    leftIcon={<Building className="w-4 h-4" />}
+                    leftIcon={<Building className="w-4 h-4 text-[#0891B2]" />}
                     autoComplete="organization"
                     disabled={isLoading}
                   />
@@ -237,7 +237,7 @@ export default function Login({ onNotify }: LoginProps) {
                   if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
                 }}
                 error={errors.email}
-                leftIcon={<Mail className="w-4 h-4" />}
+                leftIcon={<Mail className="w-4 h-4 text-[#7C3AED]" />}
                 autoComplete="email"
                 disabled={isLoading}
               />
@@ -253,7 +253,7 @@ export default function Login({ onNotify }: LoginProps) {
                   if (errors.password) setErrors((prev) => ({ ...prev, password: '' }));
                 }}
                 error={errors.password}
-                leftIcon={<Lock className="w-4 h-4" />}
+                leftIcon={<Lock className="w-4 h-4 text-[#7C3AED]" />}
                 autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
                 disabled={isLoading}
                 rightAction={
@@ -261,7 +261,7 @@ export default function Login({ onNotify }: LoginProps) {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    className="text-gray-400 hover:text-gray-600 focus:outline-none p-1 transition-colors"
+                    className="text-[#64748B] hover:text-[#172033] focus:outline-none p-1 transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -270,12 +270,12 @@ export default function Login({ onNotify }: LoginProps) {
 
               {mode === 'login' && (
                 <div className="flex items-center justify-between text-xs sm:text-sm pt-0.5">
-                  <label className="flex items-center gap-2 cursor-pointer select-none text-gray-700">
+                  <label className="flex items-center gap-2 cursor-pointer select-none text-[#172033]">
                     <input
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 focus:ring-2 cursor-pointer"
+                      className="w-4 h-4 text-[#7C3AED] rounded border-[#E2E8F0] focus:ring-[#7C3AED] focus:ring-2 cursor-pointer accent-[#7C3AED]"
                     />
                     <span>Remember this device</span>
                   </label>
@@ -286,7 +286,7 @@ export default function Login({ onNotify }: LoginProps) {
                       setForgotEmail(email);
                       setIsForgotModalOpen(true);
                     }}
-                    className="font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+                    className="font-medium text-[#7C3AED] hover:text-[#6D28D9] transition-colors cursor-pointer"
                   >
                     Forgot password?
                   </button>
@@ -299,7 +299,7 @@ export default function Login({ onNotify }: LoginProps) {
                   variant="primary"
                   size="md"
                   isLoading={isLoading}
-                  className="w-full font-semibold shadow-sm shadow-indigo-300"
+                  className="w-full font-semibold shadow-sm shadow-violet-300"
                 >
                   {mode === 'login' ? 'Sign In to MailFlow' : 'Create Free Account'}
                 </Button>
@@ -307,7 +307,7 @@ export default function Login({ onNotify }: LoginProps) {
             </form>
 
             {/* Toggle Login / Register */}
-            <div className="mt-6 pt-5 border-t border-gray-100 text-center text-xs sm:text-sm text-gray-600">
+            <div className="mt-6 pt-5 border-t border-[#E2E8F0] text-center text-xs sm:text-sm text-[#64748B]">
               {mode === 'login' ? (
                 <p>
                   Don&apos;t have an account yet?{' '}
@@ -318,7 +318,7 @@ export default function Login({ onNotify }: LoginProps) {
                       setErrors({});
                       setServerError(null);
                     }}
-                    className="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                    className="font-semibold text-[#7C3AED] hover:text-[#6D28D9] transition-colors cursor-pointer"
                   >
                     Register now
                   </button>
@@ -333,7 +333,7 @@ export default function Login({ onNotify }: LoginProps) {
                       setErrors({});
                       setServerError(null);
                     }}
-                    className="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                    className="font-semibold text-[#7C3AED] hover:text-[#6D28D9] transition-colors cursor-pointer"
                   >
                     Sign in here
                   </button>
@@ -342,20 +342,23 @@ export default function Login({ onNotify }: LoginProps) {
             </div>
           </div>
 
-          {/* Security & compliance reassurance badge */}
-          <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
+          {/* Security & compliance reassurance badge with cyan highlight */}
+          <div className="flex items-center justify-center gap-4 text-xs text-[#64748B]">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0891B2]" />
               <span>TLS 1.3 & DKIM verified</span>
             </span>
-            <span className="text-gray-300">•</span>
-            <span>Multi-region failover</span>
+            <span className="text-slate-300">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]" />
+              <span>Zero-downtime failover</span>
+            </span>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center text-xs text-gray-400">
+      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center text-xs text-[#64748B]">
         <p>© 2026 MailFlow Inc. Protected by enterprise-grade SMTP infrastructure & access policies.</p>
       </footer>
 
@@ -372,10 +375,10 @@ export default function Login({ onNotify }: LoginProps) {
       >
         {forgotSuccessMessage ? (
           <div className="space-y-4 py-2 text-center">
-            <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-full bg-[#F5F3FF] text-[#7C3AED] flex items-center justify-center mx-auto border border-[#DDD6FE]">
               <CheckCircle2 className="w-6 h-6" />
             </div>
-            <p className="text-sm text-gray-700">{forgotSuccessMessage}</p>
+            <p className="text-sm text-[#172033]">{forgotSuccessMessage}</p>
             <Button
               variant="primary"
               size="md"
@@ -391,7 +394,7 @@ export default function Login({ onNotify }: LoginProps) {
         ) : (
           <form onSubmit={handleForgotPasswordSubmit} className="space-y-4">
             {forgotError && (
-              <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs">
+              <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-[#DC2626] text-xs">
                 {forgotError}
               </div>
             )}
@@ -403,7 +406,7 @@ export default function Login({ onNotify }: LoginProps) {
               placeholder="name@company.com"
               value={forgotEmail}
               onChange={(e) => setForgotEmail(e.target.value)}
-              leftIcon={<Mail className="w-4 h-4" />}
+              leftIcon={<Mail className="w-4 h-4 text-[#7C3AED]" />}
               autoFocus
             />
 

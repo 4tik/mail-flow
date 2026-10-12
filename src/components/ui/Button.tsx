@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'cyan';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -30,15 +30,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        'bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 focus-visible:ring-indigo-500 shadow-sm shadow-indigo-100',
+        'bg-button-gradient text-white shadow-sm shadow-violet-200 focus-visible:ring-[#7C3AED]',
       secondary:
-        'bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300 focus-visible:ring-gray-400',
+        'bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] hover:bg-[#EDE9FE] focus-visible:ring-[#7C3AED]',
+      cyan:
+        'bg-[#0891B2] hover:bg-[#0E7490] text-white shadow-sm shadow-cyan-200 focus-visible:ring-[#0891B2]',
       outline:
-        'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-indigo-500 shadow-sm',
+        'border border-[#E2E8F0] bg-white text-[#172033] hover:bg-[#F5F3FF] hover:text-[#7C3AED] hover:border-[#DDD6FE] focus-visible:ring-[#7C3AED] shadow-2xs',
       ghost:
-        'text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus-visible:ring-gray-400',
+        'text-[#64748B] hover:bg-[#F5F3FF] hover:text-[#7C3AED] focus-visible:ring-[#7C3AED]',
       danger:
-        'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-500 shadow-sm shadow-red-100',
+        'bg-[#DC2626] text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-500 shadow-sm shadow-red-100',
     };
 
     const sizeStyles = {

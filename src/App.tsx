@@ -123,7 +123,7 @@ function MainAppShell({
 
   return (
     <div
-      className="min-h-screen bg-[#F8FAFC] text-gray-900 overflow-x-hidden"
+      className="min-h-screen bg-[#F8FAFC] text-[#172033] overflow-x-hidden"
       style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
     >
       <Sidebar

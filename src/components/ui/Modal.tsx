@@ -59,23 +59,23 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         className={cn(
-          'w-full bg-white rounded-2xl border border-gray-100 shadow-2xl overflow-hidden transform transition-all',
+          'w-full bg-white rounded-2xl border border-[#E2E8F0] shadow-2xl overflow-hidden transform transition-all',
           maxWidthStyles[maxWidth]
         )}
       >
-        <div className="flex items-start justify-between p-5 border-b border-gray-100 bg-gray-50/50">
+        <div className="flex items-start justify-between p-5 border-b border-[#E2E8F0] bg-[#F8FAFC]">
           <div>
-            <h3 id="modal-title" className="text-base font-semibold text-gray-900">
+            <h3 id="modal-title" className="text-base font-semibold text-[#172033]">
               {title}
             </h3>
             {description && (
-              <p className="text-xs text-gray-500 mt-0.5">{description}</p>
+              <p className="text-xs text-[#64748B] mt-0.5">{description}</p>
             )}
           </div>
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+            className="p-1.5 rounded-lg text-[#64748B] hover:text-[#172033] hover:bg-[#F5F3FF] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
