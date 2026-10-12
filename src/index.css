@@ -12,6 +12,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure cursor pointer for every clickable place with an action */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a,
+select,
+summary,
+input[type="submit"]:not(:disabled),
+input[type="button"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled),
+label:has(input:not(:disabled)),
+label[for],
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"],
+input:disabled,
+select:disabled,
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
