@@ -122,50 +122,90 @@ export default function Login({ onNotify }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen bg-hero-gradient flex flex-col justify-between selection:bg-[#F5F3FF] selection:text-[#7C3AED]">
-      {/* Top Bar */}
-      <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+    <div className="min-h-screen bg-hero-gradient flex flex-col justify-between selection:bg-[#F5F3FF] selection:text-[#7C3AED] p-3 sm:p-6 sm:py-8">
+      {/* Top Auth Header: Responsive Brand Bar */}
+      <header className="w-full max-w-5xl mx-auto flex items-center justify-between py-2 sm:py-3">
         <button
           onClick={() => setCurrentView('landing')}
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#172033] transition-colors group cursor-pointer"
+          className="flex items-center gap-2.5 group cursor-pointer focus:outline-none rounded-lg p-1"
+          title="Return to MailFlow Home"
         >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          <span>Back to Home</span>
-        </button>
-
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-button-gradient flex items-center justify-center text-white shadow-sm shadow-violet-200">
-            <Mail className="w-4 h-4" />
+          <div className="w-9 h-9 rounded-xl bg-[#7C3AED] flex items-center justify-center text-white shadow-xs group-hover:bg-[#6D28D9] transition-colors">
+            <Mail className="w-4.5 h-4.5" />
           </div>
-          <span className="font-bold text-[#172033] text-lg tracking-tight">
+          <span className="font-bold text-[#172033] text-lg sm:text-xl tracking-tight">
             Mail<span className="text-[#7C3AED]">Flow</span>
           </span>
-        </div>
+        </button>
 
-        <div className="text-xs text-[#64748B] hidden sm:flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
-          <span>Relay Engines Operational</span>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="text-xs text-[#64748B] hidden md:flex items-center gap-1.5 font-medium bg-white px-2.5 py-1 rounded-full border border-[#E2E8F0] shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+            <span>Hot-Standby Relay Active</span>
+          </div>
+
+          <button
+            onClick={() => setCurrentView('landing')}
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#475569] hover:text-[#7C3AED] bg-white hover:bg-[#F5F3FF] border border-[#E2E8F0] hover:border-[#DDD6FE] px-3 py-1.5 rounded-lg shadow-2xs transition-all cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
+            <span className="hidden xs:inline">Back to </span>Home
+          </button>
         </div>
       </header>
 
-      {/* Main Container */}
-      <main className="flex-1 flex items-center justify-center px-4 py-8 sm:px-6">
-        <div className="w-full max-w-[440px] space-y-6">
+      {/* Main Centered Content */}
+      <main className="flex-1 flex items-center justify-center py-4 sm:py-8">
+        <div className="w-full max-w-[440px] space-y-5">
           {/* Clean White Card */}
-          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-xl shadow-slate-200/50 p-6 sm:p-8 transition-all">
+          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-xl shadow-slate-200/50 p-5 sm:p-8 transition-all">
             {/* Header info */}
-            <div className="text-center space-y-1.5 mb-6">
-              <h1 className="text-2xl font-bold tracking-tight text-[#172033]">
+            <div className="text-center space-y-1 mb-5">
+              <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#172033]">
                 {mode === 'login' ? 'Sign in to MailFlow' : 'Create your account'}
               </h1>
-              <p className="text-sm text-[#64748B]">
+              <p className="text-xs sm:text-sm text-[#64748B]">
                 {mode === 'login'
                   ? 'Access your email infrastructure, queues & campaigns'
                   : 'Start relaying high-deliverability emails in minutes'}
               </p>
             </div>
 
-            {/* Quick Demo Fill Helper Banner (When in login mode) with subtle cyan highlight */}
+            {/* Seamless Mode Switch Tabs */}
+            <div className="flex bg-[#F1F5F9] p-1 rounded-xl mb-5">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('login');
+                  setErrors({});
+                  setServerError(null);
+                }}
+                className={`flex-1 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                  mode === 'login'
+                    ? 'bg-white text-[#172033] shadow-2xs'
+                    : 'text-[#64748B] hover:text-[#172033]'
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('register');
+                  setErrors({});
+                  setServerError(null);
+                }}
+                className={`flex-1 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                  mode === 'register'
+                    ? 'bg-white text-[#172033] shadow-2xs'
+                    : 'text-[#64748B] hover:text-[#172033]'
+                }`}
+              >
+                Create Account
+              </button>
+            </div>
+
+            {/* Quick Demo Fill Helper Banner (When in login mode) with cyan highlight */}
             {mode === 'login' && (
               <div className="mb-5 p-3 rounded-xl bg-[#F5F3FF] border border-[#DDD6FE] flex items-center justify-between text-xs text-[#172033]">
                 <div className="flex items-center gap-2">
@@ -293,13 +333,14 @@ export default function Login({ onNotify }: LoginProps) {
                 </div>
               )}
 
+              {/* Solid Violet Login Button */}
               <div className="pt-2">
                 <Button
                   type="submit"
                   variant="primary"
                   size="md"
                   isLoading={isLoading}
-                  className="w-full font-semibold shadow-sm shadow-violet-300"
+                  className="w-full font-semibold"
                 >
                   {mode === 'login' ? 'Sign In to MailFlow' : 'Create Free Account'}
                 </Button>
@@ -342,7 +383,7 @@ export default function Login({ onNotify }: LoginProps) {
             </div>
           </div>
 
-          {/* Security & compliance reassurance badge with cyan highlight */}
+          {/* Security & compliance reassurance badge */}
           <div className="flex items-center justify-center gap-4 text-xs text-[#64748B]">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#0891B2]" />
@@ -357,9 +398,10 @@ export default function Login({ onNotify }: LoginProps) {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center text-xs text-[#64748B]">
+      {/* Footer with Syntax Error credit */}
+      <footer className="w-full max-w-5xl mx-auto py-4 text-center text-xs text-[#64748B] flex flex-col sm:flex-row items-center justify-between gap-2">
         <p>© 2026 MailFlow Inc. Protected by enterprise-grade SMTP infrastructure & access policies.</p>
+        <span className="text-2xs text-[#64748B]/80 font-medium">Developed by Syntax Error</span>
       </footer>
 
       {/* Forgot Password Modal */}

@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'cyan';
+  variant?: 'primary' | 'secondary' | 'outline' | 'neutral' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -26,21 +26,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.99] cursor-pointer';
+      'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.99] cursor-pointer';
 
+    // STRICT SOLID-COLOR BUTTONS ONLY (NO GRADIENTS)
     const variantStyles = {
       primary:
-        'bg-button-gradient text-white shadow-sm shadow-violet-200 focus-visible:ring-[#7C3AED]',
+        'bg-[#7C3AED] hover:bg-[#6D28D9] active:bg-[#5B21B6] text-white shadow-2xs focus-visible:ring-[#7C3AED]',
       secondary:
-        'bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] hover:bg-[#EDE9FE] focus-visible:ring-[#7C3AED]',
-      cyan:
-        'bg-[#0891B2] hover:bg-[#0E7490] text-white shadow-sm shadow-cyan-200 focus-visible:ring-[#0891B2]',
+        'bg-[#0891B2] hover:bg-[#0E7490] active:bg-[#155E75] text-white shadow-2xs focus-visible:ring-[#0891B2]',
       outline:
-        'border border-[#E2E8F0] bg-white text-[#172033] hover:bg-[#F5F3FF] hover:text-[#7C3AED] hover:border-[#DDD6FE] focus-visible:ring-[#7C3AED] shadow-2xs',
+        'border border-[#7C3AED] bg-white text-[#7C3AED] hover:bg-[#F5F3FF] active:bg-[#EDE9FE] focus-visible:ring-[#7C3AED] shadow-2xs',
+      neutral:
+        'bg-[#F1F5F9] hover:bg-[#E2E8F0] active:bg-[#CBD5E1] text-[#172033] border border-[#E2E8F0] focus-visible:ring-[#64748B]',
       ghost:
         'text-[#64748B] hover:bg-[#F5F3FF] hover:text-[#7C3AED] focus-visible:ring-[#7C3AED]',
       danger:
-        'bg-[#DC2626] text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-500 shadow-sm shadow-red-100',
+        'bg-[#DC2626] hover:bg-[#B91C1C] active:bg-[#991B1B] text-white shadow-2xs focus-visible:ring-[#DC2626]',
     };
 
     const sizeStyles = {

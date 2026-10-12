@@ -95,7 +95,7 @@ export default function Landing() {
   const faqs = [
     {
       q: 'How does MailFlow execute automatic failover?',
-      a: 'MailFlow constantly tracks delivery latency and HTTP/SMTP response codes from your connected relays. If your primary provider (e.g. Amazon SES) responds with connection errors or 4xx/5xx throttles, MailFlow immediately diverts subsequent messages to your backup relay (e.g. SendGrid) with zero message loss.',
+      a: 'MailFlow constantly tracks delivery latency and response codes from your connected relays. If your primary provider (e.g. Amazon SES) responds with connection errors or 4xx/5xx throttles, MailFlow immediately diverts subsequent messages to your backup relay (e.g. SendGrid) with zero message loss.',
     },
     {
       q: 'Can I verify multiple sender domains with DKIM and SPF?',
@@ -113,15 +113,15 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#172033] selection:bg-[#F5F3FF] selection:text-[#7C3AED] flex flex-col font-sans">
-      {/* 1. Navbar */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-[#E2E8F0] transition-all">
+      {/* 1. Landing Page Header — SOLID WHITE BACKGROUND */}
+      <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo — SOLID VIOLET SQUARE */}
           <a
             href="#hero"
             className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] rounded-lg p-1 cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-button-gradient flex items-center justify-center text-white shadow-sm shadow-violet-200 transition-transform group-hover:scale-105">
+            <div className="w-8 h-8 rounded-lg bg-[#7C3AED] flex items-center justify-center text-white shadow-2xs transition-colors group-hover:bg-[#6D28D9]">
               <Mail className="w-4 h-4" />
             </div>
             <span className="font-bold text-[#172033] text-lg tracking-tight">
@@ -148,7 +148,7 @@ export default function Landing() {
             </a>
           </nav>
 
-          {/* Desktop Actions */}
+          {/* Desktop Actions — SOLID BUTTONS ONLY */}
           <div className="hidden md:flex items-center gap-3">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
@@ -250,7 +250,7 @@ export default function Landing() {
               ) : (
                 <>
                   <Button
-                    variant="outline"
+                    variant="neutral"
                     size="md"
                     onClick={() => {
                       setMobileMenuOpen(false);
@@ -278,22 +278,20 @@ export default function Landing() {
         )}
       </header>
 
-      {/* 2. Hero Section with Light Violet-to-Cyan Gradient Background */}
+      {/* 2. Hero Section with Relevant Soft Violet-to-Cyan Gradient Background */}
       <section id="hero" className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 bg-hero-gradient border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            {/* Violet-to-Cyan Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#DDD6FE] shadow-2xs text-xs font-semibold text-[#7C3AED]">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DDD6FE] shadow-2xs text-xs font-semibold text-[#7C3AED]">
               <span className="w-2 h-2 rounded-full bg-[#0891B2] animate-pulse" />
               <span>Multi-Provider Email Relay & Automatic Failover</span>
             </div>
 
-            {/* Hero Heading */}
+            {/* Hero Heading — Dark, Bold, Readable */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#172033] tracking-tight leading-[1.15]">
               Unified Email Relay with{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#0891B2]">
-                Zero-Downtime Failover
-              </span>
+              <span className="text-[#7C3AED]">Zero-Downtime</span> Failover
             </h1>
 
             {/* Hero Description */}
@@ -303,14 +301,14 @@ export default function Landing() {
               health routing.
             </p>
 
-            {/* CTAs */}
+            {/* Action Buttons — SOLID COLORS ONLY (Primary solid violet #7C3AED, Outline with violet border) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
               <Button
                 variant="primary"
                 size="lg"
                 onClick={handleCta}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
-                className="w-full sm:w-auto shadow-md shadow-violet-200"
+                className="w-full sm:w-auto"
               >
                 {isAuthenticated ? 'Open MailFlow Console' : 'Launch Workspace Demo'}
               </Button>
@@ -318,7 +316,7 @@ export default function Landing() {
                 variant="outline"
                 size="lg"
                 onClick={() => setCurrentView(isAuthenticated ? 'app' : 'login')}
-                className="w-full sm:w-auto bg-white hover:bg-[#F5F3FF] border-[#E2E8F0]"
+                className="w-full sm:w-auto"
               >
                 {isAuthenticated ? 'View Dashboard' : 'Sign In with Account'}
               </Button>
@@ -371,7 +369,7 @@ export default function Landing() {
                   </div>
                   <button
                     onClick={() => setSimulatedFailover(!simulatedFailover)}
-                    className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg border border-[#DDD6FE] bg-white text-[#7C3AED] hover:bg-[#F5F3FF] transition-all cursor-pointer shadow-2xs"
+                    className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg border border-[#7C3AED] bg-white text-[#7C3AED] hover:bg-[#F5F3FF] transition-all cursor-pointer shadow-2xs"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${simulatedFailover ? 'animate-spin' : ''}`} />
                     <span>{simulatedFailover ? 'Reset to SES Primary' : 'Simulate Primary Throttle'}</span>
@@ -380,7 +378,7 @@ export default function Landing() {
 
                 {/* 3-Stage Diagram: Source -> Router -> Target Relays */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                  {/* Stage 1: Inbound App / API (3 cols) */}
+                  {/* Stage 1: Inbound App / API */}
                   <div className="md:col-span-3 bg-white p-4 rounded-xl border border-[#E2E8F0] shadow-2xs space-y-2">
                     <div className="w-8 h-8 rounded-lg bg-[#F5F3FF] text-[#7C3AED] flex items-center justify-center">
                       <Zap className="w-4 h-4" />
@@ -393,10 +391,10 @@ export default function Landing() {
                     </div>
                   </div>
 
-                  {/* Stage 2: Central Router Node (4 cols) */}
-                  <div className="md:col-span-4 bg-white p-5 rounded-xl border-2 border-[#DDD6FE] shadow-sm relative">
+                  {/* Stage 2: Central Router Node */}
+                  <div className="md:col-span-4 bg-white p-5 rounded-xl border-2 border-[#7C3AED] shadow-sm relative">
                     <div className="flex items-center justify-between mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-button-gradient text-white flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center">
                         <Workflow className="w-4 h-4" />
                       </div>
                       <Badge variant="cyan" size="sm">
@@ -417,7 +415,7 @@ export default function Landing() {
                     </div>
                   </div>
 
-                  {/* Stage 3: Target SMTP Providers (5 cols) */}
+                  {/* Stage 3: Target SMTP Providers */}
                   <div className="md:col-span-5 space-y-2.5">
                     {/* Primary Provider: Amazon SES */}
                     <div
@@ -495,8 +493,8 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 3. Key Features Section */}
-      <section id="features" className="py-20 bg-section-gradient border-b border-[#E2E8F0]">
+      {/* 3. Key Features Section — WHITE CARDS WITH LIGHT HIGHLIGHTS */}
+      <section id="features" className="py-20 bg-white border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <Badge variant="violet">Core Capabilities</Badge>
@@ -517,7 +515,7 @@ export default function Landing() {
                 <Card
                   key={i}
                   hoverable
-                  className="flex flex-col justify-between border-[#E2E8F0] bg-white"
+                  className="flex flex-col justify-between border-[#E2E8F0] bg-white shadow-2xs"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -544,8 +542,8 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 4. Routing & Failover Architecture Deep Dive */}
-      <section id="routing" className="py-20 bg-white border-b border-[#E2E8F0]">
+      {/* 4. Routing & Failover Architecture Deep Dive — LIGHT CYAN HIGHLIGHT */}
+      <section id="routing" className="py-20 bg-[#ECFEFF]/30 border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -575,8 +573,9 @@ export default function Landing() {
                 ))}
               </div>
 
+              {/* SOLID CYAN BUTTON */}
               <div className="pt-2">
-                <Button variant="primary" size="md" onClick={handleCta}>
+                <Button variant="secondary" size="md" onClick={handleCta}>
                   Configure Provider Relays
                 </Button>
               </div>
@@ -631,11 +630,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 5. Reliability & Deliverability Shield */}
-      <section id="reliability" className="py-20 bg-section-gradient border-b border-[#E2E8F0]">
+      {/* 5. Reliability & Deliverability Shield — LIGHT VIOLET HIGHLIGHT */}
+      <section id="reliability" className="py-20 bg-[#F5F3FF]/40 border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <Badge variant="cyan">Deliverability Safeguards</Badge>
+            <Badge variant="violet">Deliverability Safeguards</Badge>
             <h2 className="text-3xl font-extrabold text-[#172033] tracking-tight">
               Maintain Clean Inboxes and High Sender Scores
             </h2>
@@ -645,7 +644,7 @@ export default function Landing() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-[#E2E8F0] space-y-4">
+            <Card className="border-[#E2E8F0] bg-white space-y-4">
               <div className="w-10 h-10 rounded-lg bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
@@ -656,7 +655,7 @@ export default function Landing() {
               </p>
             </Card>
 
-            <Card className="border-[#E2E8F0] space-y-4">
+            <Card className="border-[#E2E8F0] bg-white space-y-4">
               <div className="w-10 h-10 rounded-lg bg-[#ECFEFF] text-[#0891B2] border border-[#A5F3FC] flex items-center justify-center">
                 <AlertTriangle className="w-5 h-5" />
               </div>
@@ -667,7 +666,7 @@ export default function Landing() {
               </p>
             </Card>
 
-            <Card className="border-[#E2E8F0] space-y-4">
+            <Card className="border-[#E2E8F0] bg-white space-y-4">
               <div className="w-10 h-10 rounded-lg bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center">
                 <Activity className="w-5 h-5" />
               </div>
@@ -823,7 +822,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 9. Final Call to Action with Soft Violet-to-Cyan Accent */}
+      {/* 9. Final Call to Action */}
       <section className="py-16 bg-[#F8FAFC]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-hero-gradient rounded-2xl p-8 sm:p-12 text-center border border-[#DDD6FE] shadow-sm space-y-6">
@@ -840,7 +839,7 @@ export default function Landing() {
                 size="lg"
                 onClick={handleCta}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
-                className="w-full sm:w-auto shadow-md shadow-violet-200"
+                className="w-full sm:w-auto"
               >
                 {isAuthenticated ? 'Enter Console' : 'Access MailFlow Now'}
               </Button>
@@ -848,7 +847,7 @@ export default function Landing() {
                 variant="outline"
                 size="lg"
                 onClick={() => setCurrentView('login')}
-                className="w-full sm:w-auto bg-white border-[#E2E8F0] text-[#172033]"
+                className="w-full sm:w-auto"
               >
                 Sign In to Existing Account
               </Button>
@@ -857,13 +856,13 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 10. Footer */}
+      {/* 10. Footer with "Developed by Syntax Error" Credit */}
       <footer className="bg-white border-t border-[#E2E8F0] text-xs text-[#64748B] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             <div className="col-span-2 sm:col-span-1 space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-button-gradient flex items-center justify-center text-white">
+                <div className="w-7 h-7 rounded-lg bg-[#7C3AED] flex items-center justify-center text-white">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 <span className="font-bold text-[#172033] text-base">
@@ -947,7 +946,13 @@ export default function Landing() {
           </div>
 
           <div className="pt-8 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 MailFlow Inc. All rights reserved.</p>
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+              <p>© 2026 MailFlow Inc. All rights reserved.</p>
+              <span className="hidden sm:inline text-slate-300">•</span>
+              <span className="text-2xs text-[#7C3AED] font-semibold bg-[#F5F3FF] px-2 py-0.5 rounded border border-[#DDD6FE]">
+                Developed by Syntax Error
+              </span>
+            </div>
             <div className="flex items-center gap-6">
               <span className="hover:text-[#172033] cursor-pointer">Privacy Policy</span>
               <span className="hover:text-[#172033] cursor-pointer">Terms of Service</span>

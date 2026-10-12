@@ -1,9 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import Sidebar, { PageType } from './components/Sidebar';
 import TopNav from './components/TopNav';
-import { ToastContainer } from './components/Toast';
-import type { ToastType } from './components/Toast';
+import { ToastContainer, ToastType } from './components/Toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { cn } from './utils/cn';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 
@@ -138,50 +138,25 @@ function MainAppShell({
         onCloseMobile={() => setMobileSidebarOpen(false)}
       />
 
-      <div
-        className="transition-all duration-300"
-        style={{
-          marginLeft: 0,
-        }}
+      <TopNav
+        activePage={activePage}
+        sidebarCollapsed={sidebarCollapsed}
+        onToggleSidebar={() => setMobileSidebarOpen((prev) => !prev)}
+        onNavigate={(page) => setActivePage(page)}
+        onCreateNew={handleCreateNew}
+      />
+
+      {/* Main Content */}
+      <main
+        className={cn(
+          'pt-20 min-h-screen transition-all duration-300 pl-0',
+          sidebarCollapsed ? 'md:pl-[76px]' : 'md:pl-[280px]'
+        )}
       >
-        <div
-          className="transition-all duration-300 hidden md:block"
-          style={{
-            marginLeft: sidebarCollapsed ? '68px' : '240px',
-          }}
-        >
-          <TopNav
-            activePage={activePage}
-            sidebarCollapsed={sidebarCollapsed}
-            onToggleSidebar={() => setMobileSidebarOpen((prev) => !prev)}
-            onNavigate={(page) => setActivePage(page)}
-            onCreateNew={handleCreateNew}
-          />
+        <div className="p-4 sm:p-6 lg:p-8 max-w-[1600px] mx-auto w-full">
+          <PageComponent />
         </div>
-
-        {/* Mobile TopNav */}
-        <div className="md:hidden">
-          <TopNav
-            activePage={activePage}
-            sidebarCollapsed={false}
-            onToggleSidebar={() => setMobileSidebarOpen((prev) => !prev)}
-            onNavigate={(page) => setActivePage(page)}
-            onCreateNew={handleCreateNew}
-          />
-        </div>
-
-        {/* Main Content */}
-        <main
-          className="pt-16 min-h-screen transition-all duration-300"
-          style={{
-            paddingLeft: typeof window !== 'undefined' && window.innerWidth < 768 ? '0px' : sidebarCollapsed ? '68px' : '240px',
-          }}
-        >
-          <div className="p-4 sm:p-6 max-w-[1600px] mx-auto w-full">
-            <PageComponent />
-          </div>
-        </main>
-      </div>
+      </main>
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} onRemove={removeToast} />

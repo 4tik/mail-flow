@@ -5,18 +5,19 @@
   --dark-violet: #6D28D9;
   --light-violet: #F5F3FF;
   --primary-cyan: #0891B2;
+  --dark-cyan: #0E7490;
   --bright-cyan: #06B6D4;
   --light-cyan: #ECFEFF;
   --bg-main: #F8FAFC;
   --bg-card: #FFFFFF;
   --text-heading: #172033;
   --text-body: #64748B;
+  --text-menu: #475569;
   --border-color: #E2E8F0;
   --color-success: #16A34A;
   --color-error: #DC2626;
 
   --hero-gradient: linear-gradient(135deg, #F5F3FF 0%, #ECFEFF 100%);
-  --button-gradient: linear-gradient(135deg, #7C3AED 0%, #0891B2 100%);
   --accent-gradient: linear-gradient(135deg, #A78BFA 0%, #67E8F9 100%);
   --section-gradient: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
 }
@@ -33,17 +34,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradients */
+/* Gradients for backgrounds ONLY (Never for buttons) */
 .bg-hero-gradient {
   background: linear-gradient(135deg, #F5F3FF 0%, #ECFEFF 100%);
-}
-
-.bg-button-gradient {
-  background: linear-gradient(135deg, #7C3AED 0%, #0891B2 100%);
-}
-
-.bg-button-gradient:hover:not(:disabled) {
-  background: linear-gradient(135deg, #6D28D9 0%, #0E7490 100%);
 }
 
 .bg-accent-gradient {
